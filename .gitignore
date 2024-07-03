@@ -11,6 +11,9 @@
 
 !.dmrc
 
+!.config/hypr/
+!.config/hypr/hyprland.conf
+
 !.panmuphled.json
 
 !.config/Code\ -\ OSS/
