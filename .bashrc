@@ -20,4 +20,4 @@ for f in $HOME/.bashrc.d/*; do
 done;
 
 
-export PS1=" ⌛ "
+export PS1=" 🛸 "
