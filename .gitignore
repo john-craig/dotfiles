@@ -1,21 +1,48 @@
 *
 
+######################
+# Git
+######################
 !.gitignore
 !.gitconfig
 
+######################
+# Bash
+######################
 !.bashrc
 !.bashrc.d/
 !.bashrc.d/*
 
+
 !.config/
 
+######################
+# Display Manager
+######################
 !.dmrc
 
+######################
+# Window Manager
+######################
 !.config/hypr/
 !.config/hypr/hyprland.conf
 
 !.panmuphled.json
 
+######################
+# Terminal
+######################
+!.config/wezterm
+!.config/wezterm/wezterm.lua
+
+######################
+# Code Editor
+######################
 !.config/Code\ -\ OSS/
 !.config/Code\ -\ OSS/User
 !.config/Code\ -\ OSS/User/keybindings.json
+
+######################
+# Code Editor
+######################
+!.config/gtk-3.0/settings.ini
