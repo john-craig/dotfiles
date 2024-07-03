@@ -43,6 +43,9 @@
 !.config/Code\ -\ OSS/User/keybindings.json
 
 ######################
-# Code Editor
+# GTK 3
 ######################
+!.config/dconf
+!.config/dconf/user
+!.config/gtk-3.0/
 !.config/gtk-3.0/settings.ini
