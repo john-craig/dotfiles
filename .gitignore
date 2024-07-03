@@ -2,7 +2,6 @@
 
 !.gitignore
 !.gitconfig
-!.xinitrc
 
 !.bashrc
 !.bashrc.d/
@@ -10,13 +9,10 @@
 
 !.config/
 
-
+!.dmrc
 
 !.panmuphled.json
 
 !.config/Code\ -\ OSS/
 !.config/Code\ -\ OSS/User
 !.config/Code\ -\ OSS/User/keybindings.json
-
-!.config/rofi/
-!.config/rofi/config.rasi
