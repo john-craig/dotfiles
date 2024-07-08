@@ -1,0 +1,59 @@
+{
+    "initial_workspaces": [
+        "social",
+        "development"
+    ],
+
+    "screens": [
+        {
+            "name": "eDP-1",
+            "alias": "MAIN_MONITOR"
+        }
+    ],
+    "workspaces": [
+        {
+            "name": "social",
+            "default_screen": "MAIN_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "MAIN_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "discord",
+                            "exec": "/usr/bin/discord --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "development",
+            "default_screen": "MAIN_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "MAIN_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "code",
+                            "exec": "/usr/bin/vscodium --ozone-platform-hint=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                },
+                {
+                    "displayed_default": false,
+                    "applications": [
+                        {
+                            "name": "nyxt",
+                            "exec": "/usr/bin/nyxt",
+                            "focused_default": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
