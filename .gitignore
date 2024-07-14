@@ -59,3 +59,10 @@
 !.config/BetterDiscord/
 !.config/BetterDiscord/themes
 !.config/BetterDiscord/themes/DarkNeon.theme.css
+
+######################
+# Waybar
+######################
+!.config/waybar
+!.config/waybar/config.jsonc
+!.config/waybar/style.css
