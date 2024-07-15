@@ -1,7 +1,7 @@
 {
     "initial_workspaces": [
-        "social",
-        "development"
+        "browsing",
+        "studying"
     ],
 
     "screens": [
@@ -11,6 +11,40 @@
         }
     ],
     "workspaces": [
+        {
+            "name": "browsing",
+            "default_screen": "MAIN_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "MAIN_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "chromium",
+                            "exec": "/usr/bin/chromium --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "studying",
+            "default_screen": "MAIN_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "MAIN_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "obsidian",
+                            "exec": "/usr/bin/obsidian --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "social",
             "default_screen": "MAIN_MONITOR",
@@ -48,7 +82,7 @@
                     "applications": [
                         {
                             "name": "nyxt",
-                            "exec": "/usr/bin/nyxt",
+                            "exec": "/usr/bin/nyxt --no-socket",
                             "focused_default": false
                         }
                     ]
