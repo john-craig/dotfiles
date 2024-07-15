@@ -1,0 +1,72 @@
+#!/bin/bash
+
+ADD_COMMON=0
+
+for arg in "$@"; do
+  case "$arg" in
+    --common)
+      ADD_COMMON=1
+      ;;
+    *)
+      TARGET_PATH="$arg"
+      ;;
+  esac
+done
+
+if [[ -z $TARGET_PATH ]]; then
+  echo "Must specify a dotfile path to commit"
+  exit 1
+fi
+
+###############################################################
+# Accepts a path and adds that path and any required subpaths
+# to the gitignore file for the repository
+###############################################################
+append_gitignore () {
+    # Get the target path relative to the dotfile git repo
+    ABS_TARG_PATH=$(realpath $1)
+    REL_TARG_PATH=${ABS_TARG_PATH##${HOME}/}
+    
+    # Check to see if each subdirectory containing the
+    # target path exists, working left to right, and if
+    # it does not exist add it as a line to the gitignore
+    IFS='/' read -ra SEGMENTS <<< "$REL_TARG_PATH"
+    for SEGMENT in "${SEGMENTS[@]}"; do
+      # Build out our subpath
+      if [[ -z $SUB_PATH ]]; then
+        SUB_PATH="${SEGMENT}"
+      else
+        SUB_PATH="${SUB_PATH}/${SEGMENT}"
+      fi
+
+      # Check if it exists
+      grep -q "$SUB_PATH" "$HOME/.gitignore"
+
+      # Add it if not
+      if [[ $? -ne 0 ]]; then
+        echo "!$SUB_PATH" >> "$HOME/.gitignore"
+      fi
+    done
+
+    # Add a final empty line
+    echo "" >> "$HOME/.gitignore"
+}
+
+pushd $HOME
+  # Switch to the correct branch
+  if [[ ADD_COMMON -eq 1 ]]; then
+    TARGET_BRANCH="main"
+  else
+    TARGET_BRANCH=$(hostname)
+  fi
+
+  git switch "$TARGET_BRANCH"
+
+  if [[ $? -ne 0 ]]; then
+    echo "Failed to switch to branch $TARGET_BRANCH"
+    return 1
+  fi
+
+  append_gitignore $TARGET_PATH
+
+popd
