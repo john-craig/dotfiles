@@ -86,3 +86,6 @@
 
 
 
+!.config/discord
+!.config/discord/settings.json
+
