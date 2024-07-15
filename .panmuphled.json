@@ -1,0 +1,98 @@
+{
+    "initial_workspaces": [
+        "browsing",
+        "studying"
+    ],
+
+    "screens": [
+        {
+            "name": "DP-1",
+            "alias": "LEFT_MONITOR"
+        },
+        {
+            "name": "HDMI-A-1",
+            "alias": "RIGHT_MONITOR"
+        }
+    ],
+    "workspaces": [
+        {
+            "name": "browsing",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "chromium",
+                            "exec": "/usr/bin/chromium --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "studying",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "obsidian",
+                            "exec": "/usr/bin/obsidian --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "social",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "discord",
+                            "exec": "/usr/bin/discord --ozone-platform=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "development",
+            "default_screen": "LEFT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "code",
+                            "exec": "/usr/bin/vscodium --ozone-platform-hint=wayland --disable-gpu",
+                            "focused_default": true
+                        }
+                    ]
+                },
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": false,
+                    "applications": [
+                        {
+                            "name": "nyxt",
+                            "exec": "/usr/bin/nyxt --no-socket",
+                            "focused_default": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
