@@ -1,5 +1,6 @@
 #!/bin/bash
 
+REPO_PATH=$HOME
 ADD_COMMON=0
 
 for arg in "$@"; do
@@ -23,36 +24,38 @@ fi
 # to the gitignore file for the repository
 ###############################################################
 append_gitignore () {
-    # Get the target path relative to the dotfile git repo
-    ABS_TARG_PATH=$(realpath $1)
-    REL_TARG_PATH=${ABS_TARG_PATH##${HOME}/}
-    
-    # Check to see if each subdirectory containing the
-    # target path exists, working left to right, and if
-    # it does not exist add it as a line to the gitignore
-    IFS='/' read -ra SEGMENTS <<< "$REL_TARG_PATH"
-    for SEGMENT in "${SEGMENTS[@]}"; do
-      # Build out our subpath
-      if [[ -z $SUB_PATH ]]; then
-        SUB_PATH="${SEGMENT}"
-      else
-        SUB_PATH="${SUB_PATH}/${SEGMENT}"
-      fi
+  REL_TARG_PATH=$1
 
-      # Check if it exists
-      grep -q "$SUB_PATH" "$HOME/.gitignore"
+  # Check to see if each subdirectory containing the
+  # target path exists, working left to right, and if
+  # it does not exist add it as a line to the gitignore
+  IFS='/' read -ra SEGMENTS <<< "$REL_TARG_PATH"
+  for SEGMENT in "${SEGMENTS[@]}"; do
+    # Build out our subpath
+    if [[ -z $SUB_PATH ]]; then
+      SUB_PATH="${SEGMENT}"
+    else
+      SUB_PATH="${SUB_PATH}/${SEGMENT}"
+    fi
 
-      # Add it if not
-      if [[ $? -ne 0 ]]; then
-        echo "!$SUB_PATH" >> "$HOME/.gitignore"
-      fi
-    done
+    # Check if it exists
+    grep -q "$SUB_PATH" "$REPO_PATH/.gitignore"
 
-    # Add a final empty line
-    echo "" >> "$HOME/.gitignore"
+    # Add it if not
+    if [[ $? -ne 0 ]]; then
+      echo "!$SUB_PATH" >> "$REPO_PATH/.gitignore"
+    fi
+  done
+
+  # Add a final empty line
+  echo "" >> "$REPO_PATH/.gitignore"
 }
 
-pushd $HOME
+# Get the target path relative to the dotfile git repo
+ABS_TARG_PATH=$(realpath $TARGET_PATH)
+REL_TARG_PATH=${ABS_TARG_PATH##${REPO_PATH}/}
+
+pushd $REPO_PATH
   # Switch to the correct branch
   if [[ ADD_COMMON -eq 1 ]]; then
     TARGET_BRANCH="main"
@@ -67,6 +70,8 @@ pushd $HOME
     return 1
   fi
 
-  append_gitignore $TARGET_PATH
+  append_gitignore $REL_TARG_PATH
 
+  git add .gitignore
+  git add $REL_TARG_PATH
 popd
