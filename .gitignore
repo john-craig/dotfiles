@@ -52,6 +52,12 @@
 !.config/gtk-3.0/
 !.config/gtk-3.0/settings.ini
 
+######################
+# Rofi
+######################
+!.config/rofi/
+!.config/rofi/config.rasi
+!.config/rofi/80sneon.rasi
 
 ######################
 # BetterDiscord
