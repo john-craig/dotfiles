@@ -89,3 +89,7 @@
 !.config/discord
 !.config/discord/settings.json
 
+!.config/VSCodium
+!.config/VSCodium/User
+!.config/VSCodium/User/settings.json
+
