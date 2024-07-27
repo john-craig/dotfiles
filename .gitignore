@@ -10,10 +10,19 @@
 # Bash
 ######################
 !.bashrc
-!.bashrc.d/
-!.bashrc.d/*
-
 !.bash_profile
+
+######################
+# Zsh
+######################
+!.zshrc
+!.zprofile
+
+######################
+# All Shells
+######################
+!.shrc.d/
+!.shrc.d/*
 
 !.config/
 
