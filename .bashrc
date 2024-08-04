@@ -10,7 +10,7 @@ alias ls='ls --color=auto'
 # Set PATH first in case other scriplets depend on it
 [[ -f $HOME/.shrc.d/path.sh ]] && source $HOME/.shrc.d/path.sh
 
-for f in $HOME/.shrc.d/*; do
+for f in $HOME/.shrc.d/*.sh; do
 	# Avoid appending to PATH twice
 	[[ $(basename $f) == 'path.sh' ]] && continue
 
