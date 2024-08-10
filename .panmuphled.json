@@ -34,10 +34,10 @@
         },
         {
             "name": "studying",
-            "default_screen": "RIGHT_MONITOR",
+            "default_screen": "LEFT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "LEFT_MONITOR",
+                    "preferred_screen": "RIGHT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
