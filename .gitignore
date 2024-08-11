@@ -100,3 +100,6 @@
 
 !.local/bin/sync-dotfiles
 
+!.local/bin/deploy-host
+
+
