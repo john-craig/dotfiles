@@ -27,7 +27,7 @@ pushd $REPO_PATH
     # Update host branch
     git switch -q "$(hostname)"
     git pull -q
-    git pull --ff-only origin main -q
+    git pull --rebase=false origin main -q
     git push -q
 
     # Switch back to previous branch
