@@ -96,3 +96,5 @@
 !.config/nix
 !.config/nix/nix.conf
 
+!.local/bin/sync-dotfiles
+
