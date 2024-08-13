@@ -1,5 +1,6 @@
 {
     "workbench.colorTheme": "SynthWave '84",
     "security.workspace.trust.untrustedFiles": "open",
-    "terminal.integrated.allowChords": false
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.defaultProfile.linux": "zsh"
 }
