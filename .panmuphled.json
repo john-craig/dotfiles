@@ -68,27 +68,16 @@
         },
         {
             "name": "development",
-            "default_screen": "LEFT_MONITOR",
+            "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "RIGHT_MONITOR",
+                    "preferred_screen": "LEFT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
                             "name": "code",
                             "exec": "/usr/bin/vscodium --ozone-platform-hint=wayland --disable-gpu",
                             "focused_default": true
-                        }
-                    ]
-                },
-                {
-                    "preferred_screen": "LEFT_MONITOR",
-                    "displayed_default": false,
-                    "applications": [
-                        {
-                            "name": "nyxt",
-                            "exec": "/usr/bin/nyxt --no-socket",
-                            "focused_default": false
                         }
                     ]
                 }
