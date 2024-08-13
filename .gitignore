@@ -101,3 +101,5 @@
 !.local/bin/deploy-host
 
 
+!.shrc.d/notify.zsh
+
