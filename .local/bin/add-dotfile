@@ -67,7 +67,8 @@ pushd $REPO_PATH
 
   if [[ $? -ne 0 ]]; then
     echo "Failed to switch to branch $TARGET_BRANCH"
-    return 1
+    popd
+    exit 1
   fi
 
   append_gitignore $REL_TARG_PATH

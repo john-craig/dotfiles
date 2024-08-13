@@ -1,0 +1,35 @@
+#!/bin/bash
+
+REPO_PATH=$HOME
+
+pushd $REPO_PATH
+    # Check for changes
+    git diff-index --quiet HEAD --
+
+    if [[ $? -ne 0 ]]; then
+        echo "Working tree is dirty, bailing"
+        popd
+        exit 1
+    fi
+
+    # Store previous brnach
+    PREV_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+    set -eo pipefail
+
+    git fetch -q
+
+    # Update main branch
+    git switch -q main
+    git pull -q
+    git push -q
+
+    # Update host branch
+    git switch -q "$(hostname)"
+    git pull -q
+    git pull --rebase=false origin main -q
+    git push -q
+
+    # Switch back to previous branch
+    git switch "$PREV_BRANCH"
+popd
