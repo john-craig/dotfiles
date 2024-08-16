@@ -10,7 +10,6 @@
     hv: #34edf3; 
     primary: #f715ab; 
     ug: #0B2447;
-    font: "Monospace 24";
     background-color: @bg;
     //dark: @bg;
     border: 0px;
