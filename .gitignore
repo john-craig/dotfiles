@@ -103,3 +103,5 @@
 
 !.shrc.d/notify.zsh
 
+!.config/user-dirs.dirs
+
