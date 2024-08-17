@@ -8,7 +8,8 @@ for arg in "$@"; do
     --dev)
       EXTRA_ARGS="${EXTRA_ARGS} --fast"
       EXTRA_ARGS="${EXTRA_ARGS} --override-input nixpkgs-apocrypha ${NIXPKGS_APOCRYPHA}"
-      EXTRA_ARGS="${EXTRA_ARGS} --override-input nixpkgs-apocrypha/apocryphalNixosModules/services-library ${GALLIPEDAL_SERVICES}"
+      EXTRA_ARGS="${EXTRA_ARGS} --override-input gallipedal ${GALLIPEDAL_MODULE}"
+      EXTRA_ARGS="${EXTRA_ARGS} --override-input gallipedal/gallipedal-library ${GALLIPEDAL_SERVICES}"
       COLLECT_GARBAGE=0
       ;;
     *)
