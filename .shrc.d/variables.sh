@@ -8,6 +8,8 @@ export EDITOR="emacs -nw"
 TEXMFDIST=/usr/share/texmf-dist
 TEXMFHOME=~/.texmf
 
+export HYPRSHOT_DIR="$HOME/media/by_category/images/pictures"
+
 # Paths for different programming projects
 export HOMELAB_CONFIGURATIONS="$HOME/programming/by_category/homelab/homelab-configurations"
 export NIXPKGS_APOCRYPHA="$HOME/programming/by_category/homelab/nixpkgs-apocrypha"
