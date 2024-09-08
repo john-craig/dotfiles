@@ -1,0 +1,58 @@
+#!/bin/bash
+pushd $GALLIPEDAL_MODULE > /dev/null
+    if git diff --quiet && git diff --cached --quiet; then
+        nix flake update gallipedal-library > /dev/null
+
+        if git diff --quiet && git diff --cached --quiet; then
+            echo "gallipedal-modules  repository"
+        else
+            echo "Updating gallipedal-library input in gallipedal-modueles repository"
+            git add .
+            git commit --quiet -m "Update flake.lock for gallipedal-library"
+            git push --quiet > /dev/null
+        fi
+    else
+        echo "gallipedal-modules repository has changes"
+        popd > /dev/null
+        exit 1
+    fi
+popd > /dev/null
+
+# pushd $NIXPKGS_APOCRYPHA > /dev/null
+#     if git diff --quiet && git diff --cached --quiet; then
+#         nix flake update > /dev/null
+
+#         if git diff --quiet && git diff --cached --quiet; then
+#             echo "nixpkgs-apocrypha inputs were up to date"
+#         else
+#             echo "Updating nixpkgs-apocrypha inputs"
+#             git add .
+#             git commit --quiet -m "Update flake.lock"
+#             git push --quiet > /dev/null
+#         fi
+#     else
+#         echo "nixpkgs-apocrypha repository has changes"
+#         popd > /dev/null
+#         exit 1
+#     fi
+# popd > /dev/null
+
+pushd $HOMELAB_CONFIGURATIONS > /dev/null
+    if git diff --quiet && git diff --cached --quiet; then
+        nix flake update nixpkgs-apocrypha > /dev/null
+        nix flake update gallipedal > /dev/null
+
+        if git diff --quiet && git diff --cached --quiet; then
+            echo "homelab-configuration inputs were up to date"
+        else
+            echo "Updating homelab-configuration inputs"
+            git add .
+            git commit --quiet -m "Update flake.lock"
+            git push --quiet > /dev/null
+        fi
+    else
+        echo "homelab-configuration repository has changes"
+        popd > /dev/null
+        exit 1
+    fi
+popd > /dev/null

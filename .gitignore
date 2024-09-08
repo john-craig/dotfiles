@@ -109,3 +109,5 @@
 
 !.config/VSCodium/User/keybindings.json
 
+!.local/bin/update-homelab
+
