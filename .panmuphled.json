@@ -99,6 +99,39 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "office",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "libreoffice",
+                            "exec": "/usr/bin/libreoffice",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "name": "gaming",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "feed-the-beast",
+                            "exec": "/usr/bin/ftb-app",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
