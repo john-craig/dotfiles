@@ -24,7 +24,8 @@ pushd $REPO_PATH
     set -eo pipefail
 
     # Update main branch
-    git fetch -q origin main:main
+    git fetch -q origin
+    git rebase -q origin/main main
     git push -q origin main:main
 
     # Update host branch

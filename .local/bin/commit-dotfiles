@@ -38,16 +38,17 @@ pushd "$REPO_PATH" || exit 1
 git fetch origin
 git diff --cached --name-only | while read -r file; do
     cp  "$file" "$TEMP_DIR/$file"
-    git checkout HEAD -- "$file"  # Revert that file
 done
+
+ORIG_URL=$(git remote get-url origin)
 popd
 
 # Step 3: Checkout the specified branch in the cloned repository
 pushd "$TEMP_DIR" || exit 1
-git checkout -b "$BRANCH_NAME" || {
+git switch "$BRANCH_NAME" || {
     echo "Failed to checkout branch $BRANCH_NAME."
-    rm -rf $TEMP_DIR
     popd
+    rm -rf $TEMP_DIR
     exit 1
 }
 
@@ -55,19 +56,32 @@ git checkout -b "$BRANCH_NAME" || {
 git add .
 git commit -m "$COMMIT_MESSAGE" || {
     echo "Failed to commit changes."
-    rm -rf $TEMP_DIR
     popd
+    rm -rf $TEMP_DIR
+    exit 1
+}
+
+git remote set-url origin $ORIG_URL || {
+    echo "Failed to set origin URL."
+    popd
+    rm -rf $TEMP_DIR
     exit 1
 }
 
 # Step 5: Push the branch to the remote repository
 git push origin "$BRANCH_NAME" || {
     echo "Failed to push branch $BRANCH_NAME."
-    rm -rf $TEMP_DIR
     popd
+    rm -rf $TEMP_DIR
     exit 1
 }
+popd
 
+
+pushd "$REPO_PATH" || exit 1
+git diff --cached --name-only | while read -r file; do
+    git checkout HEAD -- "$file"  # Revert that file
+done
 popd
 
 # Step 6: Clean up the cloned repository
