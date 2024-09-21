@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Check if the repository path is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <path-to-repository>"
+    exit 1
+fi
+
+REPO_PATH="$1"
+
+# Change to the specified directory
+pushd "$REPO_PATH" || {
+    echo "Failed to change directory to $REPO_PATH"
+    exit 1
+}
+
+# Function to clean up in case of error
+cleanup() {
+    popd || exit 1
+}
+
+# Trap any errors and run cleanup
+trap cleanup ERR
+
+# Check for uncommitted changes
+if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "Uncommitted changes found, stashing them..."
+    git stash
+    STASHED=true
+fi
+
+# Fetch and pull changes from upstream with rebase
+echo "Fetching upstream changes..."
+git fetch
+echo "Pulling changes with rebase..."
+git pull --rebase
+
+# Reapply stashed changes if they were stashed
+if [ "$STASHED" = true ]; then
+    echo "Reapplying stashed changes..."
+    git stash pop
+fi
+
+# Change back to the original directory
+popd || exit 1
+
+echo "Update completed successfully."
