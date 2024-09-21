@@ -28,7 +28,7 @@ pushd $REPO_PATH
     git push -q origin main:main
 
     # Update host branch
-    git fetch -q origin $(hostname):$(hostname)
+    git pull -q origin workstation
     git pull --rebase=false origin main -q
     git push -q
 popd
