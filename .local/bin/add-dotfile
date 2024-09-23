@@ -46,5 +46,7 @@ REL_TARG_PATH=${ABS_TARG_PATH##${REPO_PATH}/}
 
 append_gitignore $REL_TARG_PATH
 
-git add .gitignore
-git add $REL_TARG_PATH
+pushd ~
+  git add .gitignore
+  git add $REL_TARG_PATH
+popd

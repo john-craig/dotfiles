@@ -119,3 +119,6 @@
 
 !.local/bin/commit-dotfiles
 
+!.local/bin/update-nix-package
+
+
