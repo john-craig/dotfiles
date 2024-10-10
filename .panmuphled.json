@@ -13,10 +13,10 @@
     "workspaces": [
         {
             "name": "browsing",
-            "default_screen": "RIGHT_MONITOR",
+            "default_screen": "MAIN_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "LEFT_MONITOR",
+                    "preferred_screen": "MAIN_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -30,10 +30,10 @@
         },
         {
             "name": "studying",
-            "default_screen": "LEFT_MONITOR",
+            "default_screen": "MAIN_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "RIGHT_MONITOR",
+                    "preferred_screen": "MAIN_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -47,10 +47,10 @@
         },
         {
             "name": "social",
-            "default_screen": "RIGHT_MONITOR",
+            "default_screen": "MAIN_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "RIGHT_MONITOR",
+                    "preferred_screen": "MAIN_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -64,10 +64,10 @@
         },
         {
             "name": "development",
-            "default_screen": "RIGHT_MONITOR",
+            "default_screen": "MAIN_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "LEFT_MONITOR",
+                    "preferred_screen": "MAIN_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -76,20 +76,14 @@
                             "focused_default": true
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "passwords",
-            "default_screen": "RIGHT_MONITOR",
-            "windows": [
+                },
                 {
                     "displayed_default": false,
                     "applications": [
                         {
-                            "name": "keepassxc",
-                            "exec": "/usr/bin/keepassxc",
-                            "focused_default": true
+                            "name": "nyxt",
+                            "exec": "/usr/bin/nyxt --no-socket",
+                            "focused_default": false
                         }
                     ]
                 }
@@ -97,31 +91,15 @@
         },
         {
             "name": "office",
-            "default_screen": "RIGHT_MONITOR",
-            "windows": [
-                {
-                    "preferred_screen": "RIGHT_MONITOR",
-                    "displayed_default": true,
-                    "applications": [
-                        {
-                            "name": "libreoffice",
-                            "exec": "/usr/bin/libreoffice",
-                            "focused_default": true
-                        }
-                    ]
-                }
-            ]
-        }, {
-            "name": "gaming",
-            "default_screen": "RIGHT_MONITOR",
+            "default_screen": "MAIN_MONITOR",
             "windows": [
                 {
                     "preferred_screen": "MAIN_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
-                            "name": "keepassxc",
-                            "exec": "/usr/bin/keepassxc",
+                            "name": "libreoffice",
+                            "exec": "/usr/bin/libreoffice",
                             "focused_default": true
                         }
                     ]
