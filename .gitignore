@@ -122,3 +122,6 @@
 !.local/bin/update-nix-package
 
 
+!.config/keepassxc
+!.config/keepassxc/keepassxc.ini
+
