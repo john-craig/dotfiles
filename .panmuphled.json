@@ -13,10 +13,10 @@
     "workspaces": [
         {
             "name": "browsing",
-            "default_screen": "MAIN_MONITOR",
+            "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "MAIN_MONITOR",
+                    "preferred_screen": "LEFT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -30,10 +30,10 @@
         },
         {
             "name": "studying",
-            "default_screen": "MAIN_MONITOR",
+            "default_screen": "LEFT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "MAIN_MONITOR",
+                    "preferred_screen": "RIGHT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -47,10 +47,10 @@
         },
         {
             "name": "social",
-            "default_screen": "MAIN_MONITOR",
+            "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "MAIN_MONITOR",
+                    "preferred_screen": "RIGHT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -64,10 +64,10 @@
         },
         {
             "name": "development",
-            "default_screen": "MAIN_MONITOR",
+            "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "MAIN_MONITOR",
+                    "preferred_screen": "LEFT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -76,14 +76,20 @@
                             "focused_default": true
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "name": "passwords",
+            "default_screen": "RIGHT_MONITOR",
+            "windows": [
                 {
                     "displayed_default": false,
                     "applications": [
                         {
-                            "name": "nyxt",
-                            "exec": "/usr/bin/nyxt --no-socket",
-                            "focused_default": false
+                            "name": "keepassxc",
+                            "exec": "/usr/bin/keepassxc",
+                            "focused_default": true
                         }
                     ]
                 }
@@ -91,10 +97,10 @@
         },
         {
             "name": "office",
-            "default_screen": "MAIN_MONITOR",
+            "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "MAIN_MONITOR",
+                    "preferred_screen": "RIGHT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
@@ -105,10 +111,9 @@
                     ]
                 }
             ]
-        },
-        {
-            "name": "passwords",
-            "default_screen": "MAIN_MONITOR",
+        }, {
+            "name": "gaming",
+            "default_screen": "RIGHT_MONITOR",
             "windows": [
                 {
                     "preferred_screen": "MAIN_MONITOR",
