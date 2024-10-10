@@ -1,0 +1,50 @@
+#!/bin/bash
+PACKAGE_NAME=$1
+REPO_PATH=$2
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <package-name> <path-to-repository>"
+    exit 1
+fi
+
+pushd $REPO_PATH > /dev/null
+    git fetch -q || {
+        echo "Failed to fetch from origin in repository $REPO_PATH"
+        popd
+        exit 1
+    }
+
+    LATEST_COMMIT=$(git rev-parse origin/HEAD 2> /dev/null)
+    [[ -z $LATEST_COMMIT ]] && {
+        echo "Failed to get latest commit"
+        exit 1
+    }
+
+    REMOTE_URL=$(git remote get-url origin 2> /dev/null)
+    [[ -z $REMOTE_URL ]] && {
+        echo "Failed to get remote URL"
+        exit 1
+    }
+popd > /dev/null
+
+PACKAGE_HASH=$(nix-prefetch-git --url $REMOTE_URL --rev $LATEST_COMMIT 2>/dev/null | jq .hash | cut -d\" -f 2)
+
+[[ -z $PACKAGE_HASH ]] && {
+    echo "Failed to get package hash"
+    exit 1
+}
+
+PACKAGE_PATH=$NIXPKGS_APOCRYPHA/packages/$PACKAGE_NAME/default.nix
+
+[[ -f $PACKAGE_PATH ]] || {
+    echo "$PACKAGE_PATH does not exist"
+    exit 1
+}
+
+# Replace the file
+sed -i '0,/hash = ".*";/s|hash = ".*";|hash = "'"$PACKAGE_HASH"'";|' $PACKAGE_PATH
+sed -i '0,/rev = ".*";/s|rev = ".*";|rev = "'"$LATEST_COMMIT"'";|' $PACKAGE_PATH
+
+echo "Updated $PACKAGE_NAME successfully."
+echo "New revision: $LATEST_COMMIT"
+echo "New hash:     $PACKAGE_HASH"

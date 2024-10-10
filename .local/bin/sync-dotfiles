@@ -2,12 +2,18 @@
 
 REPO_PATH=$HOME
 
-pushd $REPO_PATH
-    # Check for changes
-    git diff-index --quiet HEAD --
+# Function to clean up in case of error
+cleanup() {
+    popd || exit 1
+}
 
-    if [[ $? -ne 0 ]]; then
-        echo "Working tree is dirty, bailing"
+pushd $REPO_PATH
+    # Trap any errors and run cleanup
+    trap cleanup ERR
+
+    # Check for changes
+    if ! git diff --quiet || ! git diff --cached --quiet; then
+        echo "Uncommitted changes found, bailing"
         popd
         exit 1
     fi
@@ -17,19 +23,13 @@ pushd $REPO_PATH
 
     set -eo pipefail
 
-    git fetch -q
-
     # Update main branch
-    git switch -q main
-    git pull -q
-    git push -q
+    git fetch -q origin
+    git rebase -q origin/main main
+    git push -q origin main:main
 
     # Update host branch
-    git switch -q "$(hostname)"
-    git pull -q
+    git pull -q origin workstation
     git pull --rebase=false origin main -q
     git push -q
-
-    # Switch back to previous branch
-    git switch "$PREV_BRANCH"
 popd

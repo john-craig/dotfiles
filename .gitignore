@@ -111,3 +111,14 @@
 
 !.local/bin/update-homelab
 
+!.config/pipewire
+!.config/pipewire/pipewire.conf.d
+!.config/pipewire/pipewire.conf.d/loopback-instrument.conf
+
+!.local/bin/update-repository
+
+!.local/bin/commit-dotfiles
+
+!.local/bin/update-nix-package
+
+
