@@ -105,6 +105,23 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "passwords",
+            "default_screen": "MAIN_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "MAIN_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "keepassxc",
+                            "exec": "/usr/bin/keepassxc",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
