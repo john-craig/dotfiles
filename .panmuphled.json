@@ -118,15 +118,58 @@
             ]
         }, {
             "name": "gaming",
-            "default_screen": "RIGHT_MONITOR",
+            "default_screen": "LEFT_MONITOR",
             "windows": [
                 {
-                    "preferred_screen": "LEFT_MONITOR",
+                    "preferred_screen": "RIGHT_MONITOR",
                     "displayed_default": true,
                     "applications": [
                         {
                             "name": "feed-the-beast",
                             "exec": "/usr/bin/ftb-app",
+                            "focused_default": true
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "name": "music",
+            "default_screen": "LEFT_MONITOR",
+            "windows": [
+                {
+                    "preferred_screen": "RIGHT_MONITOR",
+                    "displayed_default": true,
+                    "applications": [
+                        {
+                            "name": "gtick",
+                            "exec": "/usr/bin/gtick",
+                            "focused_default": true
+                        },
+                        {
+                            "name": "lingot",
+                            "exec": "/usr/bin/lingot",
+                            "focused_default": false
+                        }
+                    ]
+                },
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": false,
+                    "applications": [
+                        {
+                            "name": "rakarrack",
+                            "exec": "/usr/bin/rakarrack",
+                            "focused_default": true
+                        }
+                    ]
+                },
+                {
+                    "preferred_screen": "LEFT_MONITOR",
+                    "displayed_default": false,
+                    "applications": [
+                        {
+                            "name": "tuxguitar",
+                            "exec": "/usr/bin/tuxguitar",
                             "focused_default": true
                         }
                     ]
