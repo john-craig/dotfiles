@@ -14,7 +14,7 @@ pushd $REPO_PATH > /dev/null
         exit 1
     }
 
-    LATEST_COMMIT=$(git rev-parse origin/HEAD 2> /dev/null)
+    LATEST_COMMIT=$(git ls-remote origin HEAD 2> /dev/null | cut -f1)
     [[ -z $LATEST_COMMIT ]] && {
         echo "Failed to get latest commit"
         exit 1
@@ -27,7 +27,7 @@ pushd $REPO_PATH > /dev/null
     }
 popd > /dev/null
 
-PACKAGE_HASH=$(nix-prefetch-git --url $REMOTE_URL --rev $LATEST_COMMIT 2>/dev/null | jq .hash | cut -d\" -f 2)
+PACKAGE_HASH=$(nix-prefetch-git --url $REMOTE_URL --rev $LATEST_COMMIT | jq .hash | cut -d\" -f 2)
 
 [[ -z $PACKAGE_HASH ]] && {
     echo "Failed to get package hash"
