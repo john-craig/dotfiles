@@ -29,7 +29,7 @@ pushd $REPO_PATH
     git push -q origin main:main
 
     # Update host branch
-    git pull --rebase origin $(hostname) -q
     git pull --rebase origin main -q
+    git pull --rebase origin $(hostname) -q
     git push -q
 popd
